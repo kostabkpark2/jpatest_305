@@ -1,21 +1,25 @@
 package domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Employee {
   @Id
+  @Column(length = 8)
   private String empId;
+  @Column(length = 30 , nullable = false)
   private String empName;
-  private int deptId;
+  @ManyToOne(fetch = FetchType.LAZY)  // Eager 가 default 임
+  @JoinColumn(name = "dept_id")
+  private Department department;
+  @Column(length = 8, nullable = false)
   private String joinDate;
   private long salary;
 
-  public Employee(String empId, String empName, int deptId, String joinDate, long salary) {
+  public Employee(String empId, String empName, Department department, String joinDate, long salary) {
     this.empId = empId;
     this.empName = empName;
-    this.deptId = deptId;
+    this.department = department;
     this.joinDate = joinDate;
     this.salary = salary;
   }
@@ -38,12 +42,12 @@ public class Employee {
     this.empName = empName;
   }
 
-  public int getDeptId() {
-    return deptId;
+  public Department getDepartment() {
+    return department;
   }
 
-  public void setDeptId(int deptId) {
-    this.deptId = deptId;
+  public void setDepartment(Department department) {
+    this.department = department;
   }
 
   public String getJoinDate() {
@@ -67,7 +71,7 @@ public class Employee {
     return "Employee{" +
         "empId='" + empId + '\'' +
         ", empName='" + empName + '\'' +
-        ", deptId=" + deptId +
+        ", department=" + department +
         ", joinDate='" + joinDate + '\'' +
         '}';
   }
