@@ -71,7 +71,7 @@ public class Employee {
     return "Employee{" +
         "empId='" + empId + '\'' +
         ", empName='" + empName + '\'' +
-        ", department=" + department +
+        ", department=" + department.getDeptName() +
         ", joinDate='" + joinDate + '\'' +
         '}';
   }

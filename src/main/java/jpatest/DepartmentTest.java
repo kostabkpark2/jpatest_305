@@ -18,8 +18,14 @@ public class DepartmentTest {
     try {
       Department department = new Department();
       System.out.println("비영속 상태");
-      department.setDeptName("IT");
+      department.setDeptName("Sales");
       em.persist(department);
+
+      department = new Department();
+      System.out.println("비영속 상태");
+      department.setDeptName("Finance");
+      em.persist(department);
+
       System.out.println("영속 상태");
       System.out.println("커밋 전");
       tx.commit();

@@ -19,17 +19,19 @@ public class EmployTest {
     try {
       // 부서 객체 가져오기
       System.out.println("부서 정보를 1차 캐시로 들고오기");
-      Department department = em.find(Department.class, 1);
+      Department department = em.find(Department.class, 2);
       // 사원 정보 생성하기
       Employee employee = new Employee();
-      employee.setEmpId("20250002");
-      employee.setEmpName("홍길동");
+      employee.setEmpId("20250006");
+      employee.setEmpName("홍길동3");
       employee.setDepartment(department);
       employee.setJoinDate("20250101");
       employee.setSalary(500);
+
+      department = em.find(Department.class, 3);
       Employee employee2 = new Employee();
-      employee2.setEmpId("20250003");
-      employee2.setEmpName("김연아");
+      employee2.setEmpId("20250007");
+      employee2.setEmpName("김연아3");
       employee2.setDepartment(department);
       employee2.setJoinDate("20250103");
       employee2.setSalary(300);
